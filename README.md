@@ -1,8 +1,4 @@
-Sure! Here's a **clean and copy-paste-friendly** `README.md` tailored for your **frontend ReactJS repository**. You can paste this directly into your GitHub repo.
 
----
-
-````markdown
 # 💻 Courses UI — ReactJS Frontend
 
 This is the **frontend application** built using ReactJS for the **Courses Management System**. It is part of the internship assignment for **Application Software Centre, IIT Bombay**.
@@ -162,7 +158,4 @@ This project is created for the internship application at the **Application Soft
 
 ```
 
----
 
-Let me know if you also want the backend version in the same copy-paste style or if you'd like help pushing these to your GitHub repos.
-```
