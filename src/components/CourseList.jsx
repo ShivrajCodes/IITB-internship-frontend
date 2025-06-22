@@ -1,37 +1,43 @@
 import { useEffect, useState } from "react";
-import api from "../api";
+import { fetchCourses, deleteCourse } from "../api";
 
 function CourseList() {
   const [courses, setCourses] = useState([]);
 
-  const fetchCourses = () => {
-    api.get("/courses").then((res) => setCourses(res.data));
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await api.delete(`/courses/${id}`);
-      fetchCourses();
-    } catch (err) {
-      alert(err.response?.data || "Cannot delete course");
-    }
+  const loadCourses = () => {
+    fetchCourses().then(setCourses);
   };
 
   useEffect(() => {
-    fetchCourses();
+    loadCourses();
   }, []);
 
+  const handleDelete = async (courseId) => {
+    try {
+      await deleteCourse(courseId);
+      loadCourses();
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
   return (
-    <div>
-      <h3>All Courses</h3>
-      <ul>
+    <div className="mt-8">
+      <h3 className="text-lg font-semibold mb-2">All Courses</h3>
+      <ul className="space-y-2">
         {courses.map((c) => (
-          <li key={c.courseId}>
-            <strong>{c.courseId}</strong>: {c.title}
-            {c.prerequisites?.length > 0 && (
-              <em> | Prereqs: {c.prerequisites.map((p) => p.courseId).join(", ")}</em>
-            )}
-            <button onClick={() => handleDelete(c.courseId)}>Delete</button>
+          <li key={c.courseId} className="p-4 bg-gray-100 rounded flex justify-between items-center">
+            <div>
+              <strong>{c.courseId}</strong>: {c.title}
+              {c.prerequisites?.length > 0 && (
+                <span className="text-sm text-gray-600 ml-2">
+                  (Prereqs: {c.prerequisites.map((p) => p.courseId).join(", ")})
+                </span>
+              )}
+            </div>
+            <button onClick={() => handleDelete(c.courseId)} className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+              Delete
+            </button>
           </li>
         ))}
       </ul>
