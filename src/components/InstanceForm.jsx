@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchCourses, createInstance } from "../api";
+import { fetchCourses, createInstance } from "../api/api";
 
 function InstanceForm({ onInstanceCreated }) {
   const [year, setYear] = useState("");

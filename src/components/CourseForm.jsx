@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchCourses, createCourse } from "../api";
+import { fetchCourses, createCourse } from "../api/api";
 
 function CourseForm({ onCourseCreated }) {
   const [title, setTitle] = useState("");

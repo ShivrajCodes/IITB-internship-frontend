@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchCourses, deleteCourse } from "../api";
+import { fetchCourses, deleteCourse } from "../api/api";
 
 function CourseList() {
   const [courses, setCourses] = useState([]);

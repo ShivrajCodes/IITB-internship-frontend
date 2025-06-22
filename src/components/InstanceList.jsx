@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchInstances, deleteInstance } from "../api";
+import { fetchInstances, deleteInstance } from "../api/api";
 
 function InstanceList({ year, semester }) {
   const [instances, setInstances] = useState([]);
